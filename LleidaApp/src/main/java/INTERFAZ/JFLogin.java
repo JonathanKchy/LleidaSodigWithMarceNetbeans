@@ -4,6 +4,15 @@
  */
 package INTERFAZ;
 
+import com.mycompany.lleidaapp.LeidaApi;
+import com.mycompany.lleidaapp.Usuario;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.net.ssl.HttpsURLConnection;
+
 /**
  *
  * @author Jess
@@ -13,9 +22,17 @@ public class JFLogin extends javax.swing.JFrame {
     /**
      * Creates new form JFLogin
      */
-    public JFLogin() {
+    LeidaApi leidaApi= new LeidaApi();
+    Usuario user = new Usuario();
+    
+    JFConsultas jfConsultas;
+    
+    public JFLogin() throws IOException {
+        
+        this.jfConsultas = new JFConsultas();
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +43,102 @@ public class JFLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jBInicio = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jTUser = new javax.swing.JTextField();
+        jTPassword = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jBInicio.setText("Inicio");
+        jBInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBInicioActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Contraseña");
+
+        jLabel1.setText("Usuario");
+
+        jTUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTUserActionPerformed(evt);
+            }
+        });
+
+        jTPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTPasswordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                            .addComponent(jTUser)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jBInicio)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jBInicio)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInicioActionPerformed
+
+        URL url = null;
+        // url = LeidaApi.construirURL("list_pdf",user.getValiduser(), user.getValidpassword(),"20220501070000", "20220601070000");
+
+        HttpsURLConnection conn = null;
+        //  conn = leidaApi.getConnection(url);
+        boolean band = false;
+        // band = leidaApi.verificarConnection(conn);
+        System.out.println(band);
+
+        // TIiANcmymJ
+
+        // TIiANcmymJ
+
+        jfConsultas.setEnabled(true);
+        jfConsultas.setVisible(true);
+    }//GEN-LAST:event_jBInicioActionPerformed
+
+    private void jTUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTUserActionPerformed
+
+    private void jTPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,11 +170,21 @@ public class JFLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFLogin().setVisible(true);
+                try {
+                    new JFLogin().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(JFLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBInicio;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTPassword;
+    private javax.swing.JTextField jTUser;
     // End of variables declaration//GEN-END:variables
 }

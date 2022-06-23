@@ -6,6 +6,7 @@
 package com.mycompany.lleidaapp;
 
 import INTERFAZ.JFLogin;
+import java.io.IOException;
 
 /**
  *
@@ -13,7 +14,7 @@ import INTERFAZ.JFLogin;
  */
 public class LleidaApp {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         JFLogin jfl=new JFLogin();
         jfl.setVisible(true);
     }
