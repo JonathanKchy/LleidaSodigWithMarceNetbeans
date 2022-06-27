@@ -49,6 +49,7 @@ public class JFLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTUser = new javax.swing.JTextField();
         jTPassword = new javax.swing.JTextField();
+        label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,9 +81,9 @@ public class JFLogin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
@@ -91,9 +92,11 @@ public class JFLogin extends javax.swing.JFrame {
                             .addComponent(jTPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                             .addComponent(jTUser)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jBInicio)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addComponent(jBInicio)
+                        .addGap(39, 39, 39)
+                        .addComponent(label)
+                        .addGap(32, 32, 32)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +110,9 @@ public class JFLogin extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jBInicio)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBInicio)
+                    .addComponent(label))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -115,15 +120,11 @@ public class JFLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInicioActionPerformed
-
+        
         URL url = null;
-        //System.out.println(user.validarUsuario(jTUser.getText(),jTPassword.getText()));
-        //System.out.println(jTUser.getText().trim());
-        
-            
-        
+         //validar usuario
         if(user.validarUsuario(jTUser.getText(),jTPassword.getText())){ 
-            
+        
         try {
             url = leidaApi.construirURL("list_pdf",user.getValiduser(), user.getValidpassword(),"20220501070000", "20220601070000");
         } catch (MalformedURLException ex) {
@@ -141,12 +142,12 @@ public class JFLogin extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(JFLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-          
             jfConsultas.setEnabled(true);
             jfConsultas.setVisible(true);
         
         }else{
             JOptionPane.showMessageDialog(null, "Datos Incorrectos");
+            
         }
     }//GEN-LAST:event_jBInicioActionPerformed
 
@@ -204,5 +205,6 @@ public class JFLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTPassword;
     private javax.swing.JTextField jTUser;
+    private javax.swing.JLabel label;
     // End of variables declaration//GEN-END:variables
 }
