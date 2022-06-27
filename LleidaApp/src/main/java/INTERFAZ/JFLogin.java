@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.net.ssl.HttpsURLConnection;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -116,20 +117,37 @@ public class JFLogin extends javax.swing.JFrame {
     private void jBInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInicioActionPerformed
 
         URL url = null;
-        // url = LeidaApi.construirURL("list_pdf",user.getValiduser(), user.getValidpassword(),"20220501070000", "20220601070000");
-
-        HttpsURLConnection conn = null;
-        //  conn = leidaApi.getConnection(url);
-        boolean band = false;
-        // band = leidaApi.verificarConnection(conn);
-        System.out.println(band);
-
-        // TIiANcmymJ
-
-        // TIiANcmymJ
-
-        jfConsultas.setEnabled(true);
-        jfConsultas.setVisible(true);
+        //System.out.println(user.validarUsuario(jTUser.getText(),jTPassword.getText()));
+        //System.out.println(jTUser.getText().trim());
+        
+            
+        
+        if(user.validarUsuario(jTUser.getText(),jTPassword.getText())){ 
+            
+        try {
+            url = leidaApi.construirURL("list_pdf",user.getValiduser(), user.getValidpassword(),"20220501070000", "20220601070000");
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(JFLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            HttpsURLConnection conn = null;
+        try {
+            conn = leidaApi.getConnection(url);
+        } catch (IOException ex) {
+            Logger.getLogger(JFLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            boolean band = false;
+        try {
+            band = leidaApi.verificarConnection(conn);
+        } catch (IOException ex) {
+            Logger.getLogger(JFLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
+            jfConsultas.setEnabled(true);
+            jfConsultas.setVisible(true);
+        
+        }else{
+            JOptionPane.showMessageDialog(null, "Datos Incorrectos");
+        }
     }//GEN-LAST:event_jBInicioActionPerformed
 
     private void jTUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTUserActionPerformed
