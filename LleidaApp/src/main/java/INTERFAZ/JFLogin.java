@@ -144,6 +144,7 @@ public class JFLogin extends javax.swing.JFrame {
         }
             jfConsultas.setEnabled(true);
             jfConsultas.setVisible(true);
+            
         
         }else{
             JOptionPane.showMessageDialog(null, "Datos Incorrectos");
