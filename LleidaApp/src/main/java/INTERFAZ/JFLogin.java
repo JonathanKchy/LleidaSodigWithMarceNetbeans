@@ -64,12 +64,14 @@ public class JFLogin extends javax.swing.JFrame {
 
         jLabel1.setText("Usuario");
 
+        jTUser.setText("sodigsa@ec");
         jTUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTUserActionPerformed(evt);
             }
         });
 
+        jTPassword.setText("TIiANcmymJ");
         jTPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTPasswordActionPerformed(evt);
